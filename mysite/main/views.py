@@ -62,6 +62,19 @@ def blog_create(request):
     return render(request, 'main/blog_form.html', {'form': form})
 
 
+def home(request):
+    """Home page with tabs for Students, Products, and Blogs."""
+    students = Student.objects.all()[:5]  # Latest 5 students
+    products = Product.objects.all()[:6]  # Latest 6 products
+    posts = BlogPost.objects.all().prefetch_related('tags')[:4]  # Latest 4 blog posts
+    
+    context = {
+        'students': students,
+        'products': products,
+        'posts': posts,
+    }
+    return render(request, 'main/home.html', context)
+
 def base_view(request):
     """Render the top-level base template for design preview."""
     return render(request, 'base.html')

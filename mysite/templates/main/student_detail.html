@@ -1,17 +1,46 @@
 {% extends "base.html" %}
 {% block title %}Student: {{ student }}{% endblock %}
 {% block content %}
-<div class="card">
-  <div class="card-header"><h4 class="mb-0">Student: {{ student }}</h4></div>
-  <div class="card-body">
-    <p><strong>Email:</strong> {{ student.email }}</p>
-
-    {% if student.address %}
-      <h6>Address</h6>
-      <p>{{ student.address.line1 }}, {{ student.address.city }}, {{ student.address.state }} - {{ student.address.zipcode }}</p>
-    {% else %}
-      <p>No address set.</p>
-    {% endif %}
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    <div class="modern-card">
+      <div class="card-header-modern">
+        <h4 class="mb-0">
+          <i class="fas fa-user-graduate me-2"></i>Student: {{ student }}
+        </h4>
+      </div>
+      <div class="card-body p-4">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="bg-light rounded-3 p-3 mb-3">
+              <h6 class="text-primary mb-2">
+                <i class="fas fa-envelope me-2"></i>Contact Information
+              </h6>
+              <p class="mb-0"><strong>Email:</strong> {{ student.email }}</p>
+            </div>
+          </div>
+          
+          <div class="col-md-6">
+            <div class="bg-light rounded-3 p-3 mb-3">
+              <h6 class="text-primary mb-2">
+                <i class="fas fa-map-marker-alt me-2"></i>Address Information
+              </h6>
+              {% if student.address %}
+                <p class="mb-0">
+                  {{ student.address.line1 }}<br>
+                  {{ student.address.city }}, {{ student.address.state }}<br>
+                  <strong>ZIP:</strong> {{ student.address.zipcode }}
+                </p>
+              {% else %}
+                <p class="text-muted mb-0">
+                  <i class="fas fa-exclamation-circle me-1"></i>No address set.
+                </p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 {% endblock %}

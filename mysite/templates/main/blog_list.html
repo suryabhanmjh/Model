@@ -1,23 +1,40 @@
 {% extends "base.html" %}
 {% block title %}Blog Posts{% endblock %}
 {% block content %}
-<div class="card">
-  <div class="card-header"><h4 class="mb-0">Blog Posts</h4></div>
-  <ul class="list-group list-group-flush">
+<div class="modern-card">
+  <div class="card-header-modern">
+    <h4 class="mb-0">
+      <i class="fas fa-blog me-2"></i>Blog Posts
+    </h4>
+  </div>
+  <div class="list-group list-group-flush">
     {% for post in posts %}
-      <li class="list-group-item d-flex justify-content-between align-items-start">
-        <div>
-          <a href="{% url 'blog_detail' post.pk %}">{{ post.title }}</a>
-          <div class="small text-muted">Tags: 
-            {% for t in post.tags.all %}
-              {{ t.name }}{% if not forloop.last %}, {% endif %}
-            {% empty %}
-              None
-            {% endfor %}
+      <div class="list-group-item border-0 p-4">
+        <div class="d-flex justify-content-between align-items-start">
+          <div class="flex-grow-1">
+            <div class="d-flex align-items-center mb-2">
+              <div class="bg-primary bg-gradient rounded-circle p-2 me-3">
+                <i class="fas fa-newspaper text-white"></i>
+              </div>
+              <h6 class="mb-0">
+                <a href="{% url 'blog_detail' post.pk %}" class="text-decoration-none">{{ post.title }}</a>
+              </h6>
+            </div>
+            <div class="small text-muted ms-5">
+              <i class="fas fa-tags me-1"></i>Tags: 
+              {% for t in post.tags.all %}
+                <span class="badge bg-light text-dark me-1">{{ t.name }}</span>
+              {% empty %}
+                <span>None</span>
+              {% endfor %}
+            </div>
           </div>
+          <a href="{% url 'blog_detail' post.pk %}" class="btn btn-outline-primary btn-modern btn-sm">
+            <i class="fas fa-arrow-right"></i>
+          </a>
         </div>
-      </li>
+      </div>
     {% endfor %}
-  </ul>
+  </div>
 </div>
 {% endblock %}
