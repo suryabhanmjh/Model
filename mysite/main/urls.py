@@ -12,4 +12,6 @@ urlpatterns = [
     path('blogs/', views.blog_list, name='blog_list'),
     path('blogs/new/', views.blog_create, name='blog_create'),
     path('blogs/<int:pk>/', views.blog_detail, name='blog_detail'),
+    # Preview the base template directly
+    path('base/', views.base_view, name='base'),
 ]

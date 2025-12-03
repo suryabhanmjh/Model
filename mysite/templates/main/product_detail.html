@@ -1,4 +1,12 @@
-<h2>{{ product.title }}</h2>
-<p>Category: {{ product.category.name }}</p>
-<p>{{ product.description }}</p>
-<p>Price: {{ product.price }}</p>
+{% extends "base.html" %}
+{% block title %}{{ product.title }}{% endblock %}
+{% block content %}
+<div class="card">
+	<div class="card-header"><h4 class="mb-0">{{ product.title }}</h4></div>
+	<div class="card-body">
+		<p class="mb-1"><strong>Category:</strong> {{ product.category.name }}</p>
+		<p>{{ product.description }}</p>
+		<p class="fw-bold">Price: {{ product.price }}</p>
+	</div>
+</div>
+{% endblock %}

@@ -1,14 +1,22 @@
-<h2>Categories</h2>
-<ul>
-{% for cat in categories %}
-  <li>{{ cat.name }} ({{ cat.products.count }} products)
-    <ul>
-      {% for p in cat.products.all %}
-        <li><a href="{% url 'product_detail' p.pk %}">{{ p.title }}</a></li>
-      {% empty %}
-        <li>No products</li>
-      {% endfor %}
-    </ul>
-  </li>
-{% endfor %}
-</ul>
+{% extends "base.html" %}
+{% block title %}Categories{% endblock %}
+{% block content %}
+<div class="row">
+  {% for cat in categories %}
+    <div class="col-md-6 mb-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{ cat.name }} <small class="text-muted">({{ cat.products.count }} products)</small></h5>
+          <ul class="small">
+            {% for p in cat.products.all %}
+              <li><a href="{% url 'product_detail' p.pk %}">{{ p.title }}</a></li>
+            {% empty %}
+              <li>No products</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,9 +1,17 @@
-<h2>{{ post.title }}</h2>
-<p>{{ post.body }}</p>
-<p>Tags:
-  {% for t in post.tags.all %}
-    <span>{{ t.name }}</span>{% if not forloop.last %}, {% endif %}
-  {% empty %}
-    <span>No tags</span>
-  {% endfor %}
-</p>
+{% extends "base.html" %}
+{% block title %}{{ post.title }}{% endblock %}
+{% block content %}
+<div class="card">
+  <div class="card-header"><h4 class="mb-0">{{ post.title }}</h4></div>
+  <div class="card-body">
+    <p>{{ post.body }}</p>
+    <p class="small text-muted">Tags:
+      {% for t in post.tags.all %}
+        <span>{{ t.name }}</span>{% if not forloop.last %}, {% endif %}
+      {% empty %}
+        <span>No tags</span>
+      {% endfor %}
+    </p>
+  </div>
+</div>
+{% endblock %}

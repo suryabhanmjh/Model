@@ -60,3 +60,8 @@ def blog_create(request):
     else:
         form = BlogPostForm()
     return render(request, 'main/blog_form.html', {'form': form})
+
+
+def base_view(request):
+    """Render the top-level base template for design preview."""
+    return render(request, 'base.html')
