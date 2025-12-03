@@ -1,0 +1,9 @@
+<h2>Student: {{ student }}</h2>
+<p>Email: {{ student.email }}</p>
+
+{% if student.address %}
+  <h3>Address</h3>
+  <p>{{ student.address.line1 }}, {{ student.address.city }}, {{ student.address.state }} - {{ student.address.zipcode }}</p>
+{% else %}
+  <p>No address set.</p>
+{% endif %}

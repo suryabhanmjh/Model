@@ -1,0 +1,14 @@
+<h2>Categories</h2>
+<ul>
+{% for cat in categories %}
+  <li>{{ cat.name }} ({{ cat.products.count }} products)
+    <ul>
+      {% for p in cat.products.all %}
+        <li><a href="{% url 'product_detail' p.pk %}">{{ p.title }}</a></li>
+      {% empty %}
+        <li>No products</li>
+      {% endfor %}
+    </ul>
+  </li>
+{% endfor %}
+</ul>

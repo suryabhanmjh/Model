@@ -1,0 +1,9 @@
+<h2>{{ post.title }}</h2>
+<p>{{ post.body }}</p>
+<p>Tags:
+  {% for t in post.tags.all %}
+    <span>{{ t.name }}</span>{% if not forloop.last %}, {% endif %}
+  {% empty %}
+    <span>No tags</span>
+  {% endfor %}
+</p>

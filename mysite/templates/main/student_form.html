@@ -1,0 +1,8 @@
+<h2>Create Student & Address</h2>
+<form method="post">{% csrf_token %}
+  <h3>Student</h3>
+  {{ s_form.as_p }}
+  <h3>Address</h3>
+  {{ a_form.as_p }}
+  <button type="submit">Save</button>
+</form>
