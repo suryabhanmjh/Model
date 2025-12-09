@@ -65,7 +65,7 @@ def blog_create(request):
 def home(request):
     """Home page with tabs for Students, Products, and Blogs."""
     students = Student.objects.all()[:5]  # Latest 5 students
-    products = Product.objects.all()[:6]  # Latest 6 products
+    products = Product.objects.all()[:9]  # Latest 6 products
     posts = BlogPost.objects.all().prefetch_related('tags')[:4]  # Latest 4 blog posts
     
     context = {
